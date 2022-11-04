@@ -7,7 +7,7 @@ function App() {
   const [clientes, setClientes] = useState([]);
   const [producto, setproducto] = useState({});
   const [productos, setproductos] = useState([]);
-
+  
   const obtenerClientes = async () => {
     const response = await fetch("http://localhost:4000/clientes");
     const data = await response.json();
@@ -19,7 +19,10 @@ function App() {
     setproductos(data);
   };
   const obtenerFacturaId = async () => {
-    const response = await fetch("http://localhost:4000/clientes");
+    const response = await fetch(`http://localhost:4000/facturas?clienteId=${clienteId}`);
+    const data = await response.json();
+    console.log(`ID de la nueva factura: ${data}`);
+    
   };
   useEffect(() => {
     obtenerClientes();
@@ -27,7 +30,7 @@ function App() {
   }, []);
   //nfn -> crea una funcion flecha
   const handleCliente = (cliente) => {
-    //obtenerFacturaId();
+    obtenerFacturaId(cliente.id);
     setCliente(cliente);
   };
   const handleProducto = (producto) => {
