@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import TablaClientes from "./components/TablaClientes";
 import TablaProductos from "./components/TablaProductos";
+//import TablaFactura from "./components/TablaFactura";
 
 function App() {
   const [cliente, setCliente] = useState({});
@@ -40,17 +41,24 @@ function App() {
     <div className="container">
       <h1 className="text-center">Sistema de Ventas</h1>
       <TablaClientes clientes={clientes} cliente={handleCliente} />
-      <TablaProductos productos={productos} producto={handleProducto} />
       <h4>
         {Object.keys(cliente).length > 0
           ? `DNI: ${cliente.dni} Nombre: ${cliente.nombre} ${cliente.apellido}`
           : null}
       </h4>
+      <TablaProductos productos={productos} producto={handleProducto} />
       <h4>
         {Object.keys(producto).length > 0
           ? `Producto: ${producto.nombre}`
           : null}
       </h4>
+      <div className="input-group m-3">
+        <div className="input-group-text" >Cantidad</div>
+        <input id="cProducto" type="number" min="0" className="form-control" />
+        <button className="btn btn-outline-primary"> + </button>
+        <button className="btn btn-outline-danger"> - </button>
+        <button className="btn btn-success">Añadir producto</button>
+      </div>
     </div>
   );
 }

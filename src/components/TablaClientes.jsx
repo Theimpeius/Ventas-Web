@@ -4,7 +4,7 @@ const TablaClientes = ({clientes,cliente}) =>{
     return(
         <div className="container">
             <table className="table table-hover">
-                <thead className="table-success">
+                <thead className="table-danger">
                     <tr>
                         <th>DNI</th>
                         <th>Nombre</th>
